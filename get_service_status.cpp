@@ -20,7 +20,8 @@ void get_service_status::run_get_status()
 
 bool get_service_status::get_systemd_status() {
     std::string cmd = "systemctl --user status redshift";
-    int exitCode = WEXITSTATUS(system(cmd.c_str()));
+    int cmdExec = system(cmd.c_str());
+    int exitCode = WEXITSTATUS(cmdExec);
     return exitCode == 0;
 }
 
