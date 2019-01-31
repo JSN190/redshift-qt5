@@ -27,14 +27,15 @@ void MainWindow::on_buttonServiceStartStop_clicked()
     connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
     connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
     thread->start();
+    ui->buttonServiceStartStop->setEnabled(false);
 }
 
 void MainWindow::service_status_received(bool running)
 {
-    QPushButton *buttonServiceStartStop = this->findChild<QPushButton*>(QString("buttonServiceStartStop"));
     if (running) {
-        buttonServiceStartStop->setText(QString("Start"));
+        ui->buttonServiceStartStop->setText(QString("Start"));
     } else {
-        buttonServiceStartStop->setText(QString("Stop"));
+        ui->buttonServiceStartStop->setText(QString("Stop"));
     }
+    ui->buttonServiceStartStop->setEnabled(true);
 }
