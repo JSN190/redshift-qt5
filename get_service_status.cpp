@@ -26,7 +26,10 @@ bool get_service_status::get_systemd_status() {
 }
 
 bool get_service_status::get_homebrew_status() {
-    return false;
+    std::string cmd = "/usr/local/bin/brew services list | grep 'redshift '";
+    int cmdExec = system(cmd.c_str());
+    int exitCode = WEXITSTATUS(cmdExec);
+    return exitCode == 0;
 }
 
 bool get_service_status::get_windows_status() {
