@@ -42,6 +42,30 @@ void get_service_status::run_stop_service() {
     emit finished();
 }
 
+void get_service_status::run_enable_service() {
+#ifdef Q_OS_LINUX
+    status = enable_systemd_service();
+#elif defined(Q_OS_DARWIN)
+    status = enable_homebrew_service();
+#elif defined(Q_OS_MSDOS)
+    status = enable_windows_service();
+#endif
+    emit service_enable(status);
+    emit finished();
+}
+
+void get_service_status::run_disable_service() {
+#ifdef Q_OS_LINUX
+    status = disable_systemd_service();
+#elif defined(Q_OS_DARWIN)
+    status = disable_homebrew_service();
+#elif defined(Q_OS_MSDOS)
+    status = disable_windows_service();
+#endif
+    emit service_disable(status);
+    emit finished();
+}
+
 bool get_service_status::get_systemd_status() {
     std::string cmd = "systemctl --user status redshift";
     int cmdExec = system(cmd.c_str());
@@ -95,4 +119,29 @@ bool get_service_status::stop_homebrew_service() {
     return exitCode == 0;
 }
 
+bool get_service_status::stop_windows_service() {
+    return false;
+}
+
+bool get_service_status::enable_systemd_service() {
+    return false;
+}
+
+bool get_service_status::enable_homebrew_service() {
+    return false;
+}
+bool get_service_status::enable_windows_service() {
+    return false;
+}
+
+bool get_service_status::disable_systemd_service() {
+    return false;
+}
+
+bool get_service_status::disable_homebrew_service() {
+    return false;
+}
+bool get_service_status::disable_windows_service() {
+    return false;
+}
 
