@@ -22,6 +22,8 @@ private slots:
     // status indicates whether the start/stop attempt was successful
     void service_start_feedback(bool status);
     void service_stop_feedback(bool status);
+    void service_enable_feedback(bool status);
+    void service_disable_feedback(bool status);
 
 private:
     Ui::MainWindow *ui;
