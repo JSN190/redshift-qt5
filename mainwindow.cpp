@@ -62,3 +62,17 @@ void MainWindow::service_stop_feedback(bool success) {
     }
     ui->buttonServiceStartStop->setEnabled(true);
 }
+
+void MainWindow::service_enable_feedback(bool success) {
+    qDebug() << "enable feedback";
+    if (success) {
+        qDebug() << "enable feedback success";
+    }
+}
+
+void MainWindow::service_disable_feedback(bool success) {
+    qDebug() << "disable feedback";
+    if (success) {
+        qDebug() << "disable feedback success";
+    }
+}
