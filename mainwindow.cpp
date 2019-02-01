@@ -33,7 +33,6 @@ void MainWindow::on_buttonServiceStartStop_clicked()
 
 void MainWindow::service_status_received(bool running)
 {
-    qDebug() << "status received";
     QThread* thread = new QThread();
     get_service_status* worker = new get_service_status();
     worker->moveToThread(thread);
