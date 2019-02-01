@@ -13,11 +13,15 @@ public:
 
 public slots:
     void run_get_status();
-    //void run_start_service();
-    //void run_stop_service();
+    void run_start_service();
+    void run_stop_service();
 
 signals:
+    // status indicates whether the service is running or not
     void service_status_received(bool status);
+    // status indicates whether the start/stop attempt was successful
+    void service_start(bool status);
+    void service_stop(bool status);
     void finished();
 
 private:
@@ -25,6 +29,12 @@ private:
     bool get_systemd_status();
     bool get_homebrew_status();
     bool get_windows_status();
+    bool start_systemd_service();
+    bool start_homebrew_service();
+    bool start_windows_service();
+    bool stop_systemd_service();
+    bool stop_homebrew_service();
+    bool stop_windows_service();
 };
 
 #endif
