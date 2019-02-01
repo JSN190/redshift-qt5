@@ -37,10 +37,12 @@ void MainWindow::service_status_received_startstop(bool running)
     get_service_status* worker = new get_service_status();
     worker->moveToThread(thread);
     if (running) {
-        connect(worker, SIGNAL(service_stop(bool)), this, SLOT(service_stop_feedback(bool)));
+        connect(worker, SIGNAL(service_stop(bool)),
+                this, SLOT(service_stop_feedback(bool)));
         connect(thread, SIGNAL(started()), worker, SLOT(run_stop_service()));
     } else {
-        connect(worker, SIGNAL(service_start(bool)), this, SLOT(service_start_feedback(bool)));
+        connect(worker, SIGNAL(service_start(bool)),
+                this, SLOT(service_start_feedback(bool)));
         connect(thread, SIGNAL(started()), worker, SLOT(run_start_service()));
     }
     connect(worker, SIGNAL(finished()), thread, SLOT(quit()));
@@ -87,7 +89,8 @@ void MainWindow::service_status_received_enabledisable(bool running) {
                 this, SLOT(service_disable_feedback(bool)));
         connect(thread, SIGNAL(started()), worker, SLOT(run_stop_service()));
     } else {
-        connect(worker, SIGNAL(service_start(bool)), this, SLOT(service_enable_feedback(bool)));
+        connect(worker, SIGNAL(service_start(bool)),
+                this, SLOT(service_enable_feedback(bool)));
         connect(thread, SIGNAL(started()), worker, SLOT(run_start_service()));
     }
     connect(worker, SIGNAL(finished()), thread, SLOT(quit()));
