@@ -62,7 +62,10 @@ bool get_service_status::get_windows_status() {
 }
 
 bool get_service_status::start_systemd_service() {
-    return false;
+    std::string cmd = "systemctl --user start redshift";
+    int cmdExec = system(cmd.c_str());
+    int exitCode = WEXITSTATUS(cmdExec);
+    return exitCode == 0;
 }
 
 bool get_service_status::start_homebrew_service() {
@@ -75,6 +78,13 @@ bool get_service_status::start_homebrew_service() {
 
 bool get_service_status::start_windows_service() {
     return false;
+}
+
+bool get_service_status::stop_systemd_service() {
+    std::string cmd = "systemctl --user stop redshift";
+    int cmdExec = system(cmd.c_str());
+    int exitCode = WEXITSTATUS(cmdExec);
+    return exitCode == 0;
 }
 
 bool get_service_status::stop_homebrew_service() {
