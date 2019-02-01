@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>364</height>
+    <height>332</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -84,25 +84,22 @@
         </item>
         <item>
          <widget class="QTabWidget" name="tabWidget_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
           <property name="currentIndex">
            <number>0</number>
           </property>
           <widget class="QWidget" name="tab_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <attribute name="title">
             <string>Resolve</string>
            </attribute>
-           <layout class="QGridLayout" name="gridLayout_2">
-            <item row="0" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
              <layout class="QFormLayout" name="formResolve">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetDefaultConstraint</enum>
-              </property>
               <property name="fieldGrowthPolicy">
                <enum>QFormLayout::ExpandingFieldsGrow</enum>
               </property>
@@ -110,13 +107,6 @@
                <widget class="QLabel" name="labelCity">
                 <property name="text">
                  <string>City</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="labelCountry">
-                <property name="text">
-                 <string>Country</string>
                 </property>
                </widget>
               </item>
@@ -145,6 +135,13 @@
                 </property>
                 <property name="placeholderText">
                  <string>e.g. Guildford</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="labelCountry">
+                <property name="text">
+                 <string>Country</string>
                 </property>
                </widget>
               </item>
@@ -181,7 +178,7 @@
               </item>
              </layout>
             </item>
-            <item row="1" column="0">
+            <item>
              <widget class="QPushButton" name="buttonResolveApply">
               <property name="focusPolicy">
                <enum>Qt::TabFocus</enum>
@@ -197,8 +194,8 @@
            <attribute name="title">
             <string>Manual</string>
            </attribute>
-           <layout class="QGridLayout" name="gridLayout_3">
-            <item row="0" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
              <layout class="QFormLayout" name="formLayout">
               <property name="fieldGrowthPolicy">
                <enum>QFormLayout::ExpandingFieldsGrow</enum>
@@ -260,7 +257,7 @@
               </item>
              </layout>
             </item>
-            <item row="1" column="0">
+            <item>
              <widget class="QPushButton" name="buttonManualApply">
               <property name="focusPolicy">
                <enum>Qt::TabFocus</enum>
@@ -297,7 +294,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>22</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
