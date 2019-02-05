@@ -131,7 +131,11 @@ bool get_service_status::enable_systemd_service() {
 }
 
 bool get_service_status::enable_homebrew_service() {
-    return false;
+    std::string cmd = "/usr/local/bin/brew services start redshift | "
+                      "grep '==> Successfully started `redshift` (label: homebrew.mxcl.redshift)'";
+    int cmdExec = system(cmd.c_str());
+    int exitCode = WEXITSTATUS(cmdExec);
+    return exitCode == 0;
 }
 bool get_service_status::enable_windows_service() {
     return false;
@@ -145,7 +149,7 @@ bool get_service_status::disable_systemd_service() {
 }
 
 bool get_service_status::disable_homebrew_service() {
-    return false;
+    return stop_homebrew_service();
 }
 bool get_service_status::disable_windows_service() {
     return false;
